@@ -1,24 +1,22 @@
 locals {
   archive               = "${local.lambda_dir}/lambda_example.zip"
-  bucket_name           = "some-fancy-s3-bucket-name-here" // NOTE: S3 bucket names need to be unique
   lambda_dir            = "${path.module}/lambda"
   lambda_name           = "lambda_example"
-  log_retention_in_days = 30
-  region                = "us-east-1"
+  log_retention_in_days = 7
   md5_file              = "${local.lambda_dir}/lastbuild.md5"
   sha256_file           = "${local.lambda_dir}/lastbuild.sha256"
   tags = {
+    name    = local.lambda_name
     testing = "true"
-    project = "lambda example"
   }
 }
 
 provider "aws" {
-  region = local.region
+  region = var.region
 }
 
 resource "aws_s3_bucket" "lambda_example" {
-  bucket = local.bucket_name
+  bucket = var.bucket
   tags   = local.tags
 }
 
@@ -50,6 +48,11 @@ resource "aws_iam_role" "lambda_example" {
 EOF
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_example" {
+  role       = aws_iam_role.lambda_example.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSLambdaExecute"
+}
+
 resource "aws_lambda_function" "lambda_example" {
   function_name    = local.lambda_name
   handler          = local.lambda_name
@@ -62,7 +65,7 @@ resource "aws_lambda_function" "lambda_example" {
 
   environment {
     variables = {
-      EXAMPLE = "true"
+      VERSION = chomp(file(local.md5_file))
     }
   }
 

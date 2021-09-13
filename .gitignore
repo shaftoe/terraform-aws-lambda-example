@@ -1,2 +1,5 @@
 *.zip
 lambda/lambda_example
+terraform.tfvars
+terraform.tfstate*
+.terraform.lock.hcl
