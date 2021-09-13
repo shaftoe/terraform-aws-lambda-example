@@ -1,6 +1,12 @@
 # AWS Lambda function with Terraform
 
-Example code to showcase a (Go `1.1x`) AWS Lambda function deployed via Terraform
+Example of Terraform configuration that showcase a two-steps (Go `1.1x`) AWS Lambda function deployment
+
+## Why two steps
+
+The main reason is to avoid shipping the archive together with the configuration (that is, in Git). We only store the hash(es) of the last-built archive instead.
+
+Might be useful when Terraform configuration is shared by multiple users.
 
 ## Usage
 
