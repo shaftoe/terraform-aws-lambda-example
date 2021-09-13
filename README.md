@@ -8,7 +8,10 @@ Example code to showcase a (Go `1.1x`) AWS Lambda function deployed via Terrafor
 1. optional: edit `lambda/main.go`
 1. run `make build` to create the build archive
 1. run `terraform init`
-1. run `terraform apply`
+1. run `terraform apply`: will prompt for
+
+    - the bucket name to be created and used to host the build archive
+    - the AWS region where the resources will be created
 
 ## TODOs
 
