@@ -1,6 +1,8 @@
 # AWS Lambda function with Terraform
 
-Example of Terraform configuration that showcase a two-steps (Go `1.1x`) AWS Lambda function deployment
+Example of Terraform configuration that showcase a two-steps (Go `1.1x`) AWS Lambda function deployment.
+
+Blog post: <https://a.l3x.in/blog/terrafom-lambda-no-archive-in-git/>
 
 ## Why two steps
 
@@ -19,7 +21,3 @@ Might be useful when Terraform configuration is shared by multiple users.
 
     - the bucket name to be created and used to host the build archive
     - the AWS region where the resources will be created
-
-## TODOs
-
-- add cross-link to blogpost
