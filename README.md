@@ -22,8 +22,4 @@ Might be useful when Terraform configuration is shared by multiple users.
 
 ## TODOs
 
-- complete README
-- add links and references
-- add pros and cons
-
-[1]: <https://johnroach.io/2020/09/04/deploying-lambda-functions-with-terraform-just-dont/>
+- add cross-link to blogpost
