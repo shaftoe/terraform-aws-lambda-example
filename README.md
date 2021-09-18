@@ -13,6 +13,7 @@ Might be useful when Terraform configuration is shared by multiple users.
 1. clone this repository and `cd` into its working directory
 1. optional: edit `lambda/main.go`
 1. run `make build` to create the build archive
+1. setup your AWS environment (e.g. `export AWS_PROFILE=my-profile`)
 1. run `terraform init`
 1. run `terraform apply`: will prompt for
 
